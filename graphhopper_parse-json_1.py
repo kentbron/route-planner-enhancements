@@ -143,7 +143,7 @@ while True:
                 print(f"Distance Traveled: {distance:.1f} {unit_str}")
                 print(f"Trip Duration: {hour:02d}:{minute:02d}:{sec:02d}")
                 print("=================================================")
-                logging.info(f"Route found. Distance: {distance:.1f} {unit_str}, Duration: {hour:02d}:{minute:02d}:{sec:02d}")
+                logging.info(f"Total trip distance: {distance:.1f} {unit_str}"), Duration: {hour:02d}:{minute:02d}:{sec:02d}")
                 if "instructions" in paths_data["paths"][0]:
                     for each in range(len(paths_data["paths"][0]["instructions"])):
                         instruction = paths_data["paths"][0]["instructions"][each]
