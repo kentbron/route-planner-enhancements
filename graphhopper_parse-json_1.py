@@ -14,6 +14,8 @@ log_filename = f"route_planner_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
 logging.basicConfig(filename=log_filename, level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info("Application started.")
+print("Welcome to Route Planner v1.0 🚗🗺️")
+
 
 route_url = "https://graphhopper.com/api/1/route?"
 key = "d25591a8-cbbc-456d-8e3d-8a5f63420189"
