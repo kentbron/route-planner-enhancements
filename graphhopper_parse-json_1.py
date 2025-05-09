@@ -175,7 +175,7 @@ while True:
                     logging.warning("No detailed instructions found in the routing response.")
 
                 # --- Simple Map Integration ---
-                map_zoom = 13  # Adjust for desired zoom level
+                map_zoom = 16  # Adjust for desired zoom level
                 map_width = 600
                 map_height = 400
                 map_url = f"https://www.openstreetmap.org/export/embed.html?bbox={min(float(orig_lng), float(dest_lng))},{min(float(orig_lat), float(dest_lat))},{max(float(orig_lng), float(dest_lng))},{max(float(orig_lat), float(dest_lat))}&layer=mapnik&marker={orig_lat},{orig_lng}&marker={dest_lat},{dest_lng}"
