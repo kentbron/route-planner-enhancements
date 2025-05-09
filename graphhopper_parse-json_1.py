@@ -56,15 +56,27 @@ def geocoding(location, key):
             new_loc = location
             if json_status != 200:
                 error_message = json_data.get('message', 'No message provided')
-                print(f"Geocode API status: {json_status}\nError message: {error_message}")
+                print("\n⚠️ Geocoding API Error")
+                print(f"Status Code: {json_status}")
+                print(f"Error Message: {error_message}")
+                print("Possible solutions:")
+                print("- Check your internet connection")
+                print("- Verify your API key is valid")
+                print("- Try again in a few minutes")
                 logging.warning(f"Geocoding failed for '{location}'. Status: {json_status}, Error: {error_message}")
         return json_status, lat, lng, new_loc
     except requests.exceptions.RequestException as e:
-        print(f"Error during geocoding API request for '{location}': {e}")
+        print("\n⚠️ Connection Error - Geocoding API Unavailable")
+        print(f"Error details: {e}")
+        print("We couldn't connect to the location service.")
+        print("Please check your internet connection and try again.")
         logging.error(f"Geocoding API request failed for '{location}': {e}")
         return None, "null", "null", location
     except (KeyError, IndexError, TypeError) as e:
-        print(f"Error processing geocoding API response for '{location}': {e}")
+        print("\n⚠️ Data Processing Error")
+        print(f"Error details: {e}")
+        print("We received unexpected data from the server.")
+        print("Please try a different location or try again later.")
         logging.error(f"Error processing geocoding API response for '{location}': {e}. Raw response: {replydata.text if 'replydata' in locals() else 'No response'}")
         return None, "null", "null", location
 
@@ -175,19 +187,36 @@ while True:
 
             else:
                 error_message = paths_data.get('message', 'No message provided')
-                print(f"Error in routing response: {error_message}")
+                print("\n⚠️ Routing API Error")
+                print(f"Status Code: {paths_status}")
+                print(f"Error Message: {error_message}")
+                print("Possible solutions:")
+                print("- Check both locations are valid")
+                print("- Try a different transport mode")
+                print("- Verify your API key is valid")
                 logging.error(f"Error in routing response: {error_message}")
                 print("*************************************************")
         except requests.exceptions.RequestException as e:
-            print(f"Error during routing API request: {e}")
+            print("\n⚠️ Connection Error - Routing Service Unavailable")
+            print(f"Error details: {e}")
+            print("We couldn't connect to the routing service.")
+            print("Please check your internet connection and try again.")
             logging.error(f"Error during routing API request: {e}")
             print("*************************************************")
         except (KeyError, IndexError, TypeError) as e:
-            print(f"Error processing routing API response: {e}")
+            print("\n⚠️ Data Processing Error")
+            print(f"Error details: {e}")
+            print("We received unexpected data from the routing service.")
+            print("Please try different locations or try again later.")
             logging.error(f"Error processing routing API response: {e}. Raw response: {paths_response.text if 'paths_response' in locals() else 'No response'}")
             print("*************************************************")
     else:
-        print("Could not retrieve valid coordinates for both starting and destination locations.")
+        print("\n⚠️ Location Error - Invalid Coordinates")
+        print("We couldn't get valid coordinates for both locations.")
+        print("Please check:")
+        print("- Both locations exist and are spelled correctly")
+        print("- You're using complete addresses")
+        print("- There are no special characters causing issues")
         logging.warning("Could not retrieve valid coordinates for both starting and destination locations.")
         print("*************************************************")
 
