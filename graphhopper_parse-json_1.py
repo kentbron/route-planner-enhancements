@@ -17,7 +17,7 @@ logging.info("Application started.")
 print("Welcome to Route Planner v1.0 🚗🗺️")
 
 #Completed Tested
-#error Handling kentjyls noel
+#error Handling kentjyls noel: I am the one who fix the error Handling and testing
 route_url = "https://graphhopper.com/api/1/route?"
 key = "d25591a8-cbbc-456d-8e3d-8a5f63420189"
 
